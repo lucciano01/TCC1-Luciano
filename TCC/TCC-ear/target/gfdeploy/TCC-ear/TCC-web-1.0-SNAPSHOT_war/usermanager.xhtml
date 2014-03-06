@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <script src="/project/faces/javax.faces.resource/theme.css?ln=primefaces-bootstrap"></script>
+        <link rel="stylesheet" type="text/css" href="/css/layout_superior.css"/>
+
+    </h:head>
+    <h:body>
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="west" header="Cadastro" size="200" minSize="40"   resizable="true" >
+                <h:form prependId="false">
+                    <p:commandLink value="Novo" actionListener="#{usuarioMB.prepareSalvar}" onclick="dialogGerUsuarioSave.show()" />
+                </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <h1>Gerenciador de Usuários</h1>
+                <br/>
+
+                <h:form id="formListagemUsuarios">
+                    <p:dataTable value="#{usuarioMB.modelUsuarios}" var="user" id="tabelaListagemUsuarios" 
+                                  rows="10" paginator="true"
+                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                rowsPerPageTemplate="10,20,25,50" paginatorPosition="bottom" emptyMessage="#{msg['chamados.msg.nenhum.usuario.encontrado']}"
+            rowIndexVar="index">
+
+                        <p:column headerText="Matricula">
+                            <h:outputText value="#{user.matricula}"  />
+                        </p:column>
+
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{user.nome}"/>
+                        </p:column>
+
+                        <p:column headerText="Perfil">
+                            <h:outputText value="#{user.perfil}"/>
+                        </p:column>
+
+                        <p:column headerText="Mais Informações">
+                            <p:commandButton actionListener="#{usuarioMB.prepareEdicao()}" update="@([id$=dialogGerUsuario])"  icon="ui-icon-search"  onclick="dialogGerUsuario.show()"/>
+                         
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+
+        <h:form id="formUser"  >
+            <p:dialog header="Gerencia de Usuarios" widgetVar="dialogGerUsuario" id="dialogUsuario" resizable="false" modal="true" showEffect="slide" width="500">
+                <h:panelGrid id="infoUsuario" columns="2" style="margin-bottom:10px">
+
+                    <h:outputLabel for="codigo" value="Matricula:" />
+                    <h:inputText id="codigo" value="#{usuarioMB.usuario.matricula}"/>
+
+                    <h:outputLabel for="login" value="Login:" />
+                    <h:inputText id="login" value="#{usuarioMB.usuario.login}"/>
+
+                    <h:outputLabel for="senha" value="Senha:" />
+                    <h:inputText id="senha" value="#{usuarioMB.usuario.senha}"/>
+
+                    <h:outputLabel for="nome" value="Nome:" />
+                    <h:inputText id="nome" value="#{usuarioMB.usuario.nome}"/>
+
+                    <h:outputLabel for="perfil" value="Perfil:" />
+                    <h:inputText id="perfil" value="#{usuarioMB.usuario.perfil}"/>
+                        
+
+                    <h:outputLabel for="tel1" value="Telefone 1:" />
+                    <h:inputText id="tel1" value="#{usuarioMB.tel1}"/>
+
+                    <h:outputLabel for="tel2" value="Telefone 2:" />
+                    <h:inputText id="tel2" value="#{usuarioMB.tel2}"/>
+
+                    <h:outputLabel for="email1" value="Email 1:" />
+                    <h:inputText id="email1" value="#{usuarioMB.em1}"/>
+
+                    <h:outputLabel for="tel2" value="Email 2:" />
+                    <h:inputText id="email2" value="#{usuarioMB.em2}"/>
+
+                    <p:commandButton update=":formListagemUsuarios:tabelaListagemUsuarios"  actionListener="#{usuarioMB.remove()}" value="Excluir"/>
+                    <p:commandButton update=":formListagemUsuarios:tabelaListagemUsuarios" actionListener="#{usuarioMB.update()}" value="Salvar Alterações"/>
+
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+        
+        <h:form id="formUserSave" >
+            <p:dialog header="Gerencia de Usuarios" widgetVar="dialogGerUsuarioSave" id="dialogUsuario" resizable="false" modal="true" showEffect="slide" width="500">
+                <h:panelGrid id="infoUsuario" columns="2" style="margin-bottom:10px">
+
+                    <h:outputLabel for="codigo" value="Matricula:" />
+                    <h:inputText id="codigo" value="#{usuarioMB.usuario.matricula}"/>
+
+                    <h:outputLabel for="login" value="Login:" />
+                    <h:inputText id="login" value="#{usuarioMB.usuario.login}"/>
+
+                    <h:outputLabel for="senha" value="Senha:" />
+                    <h:inputSecret id="senha" value="#{usuarioMB.usuario.senha}"/>
+
+                    <h:outputLabel for="nome" value="Nome:" />
+                    <h:inputText id="nome" value="#{usuarioMB.usuario.nome}"/>
+
+                    <h:outputLabel for="perfil" value="Perfil:" />
+                    <h:selectOneMenu id="perfil" value="#{usuarioMB.usuario.perfil}">
+                        <f:selectItem itemLabel="COORDENADOR" itemValue="COORDENADOR"/>
+                        <f:selectItem itemLabel="PROFESSOR" itemValue="PROFESSOR"/>
+                        <f:selectItem itemLabel="ADMINISTRADOR" itemValue="ADMINISTRADOR"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="tel1" value="Telefone 1:" />
+                    <h:inputText id="tel1" value="#{usuarioMB.tel1}"/>
+
+                    <h:outputLabel for="tel2" value="Telefone 2:" />
+                    <h:inputText id="tel2" value="#{usuarioMB.tel2}"/>
+
+                    <h:outputLabel for="email1" value="Email 1:" />
+                    <h:inputText id="email1" value="#{usuarioMB.em1}"/>
+
+                    <h:outputLabel for="tel2" value="Email 2:" />
+                    <h:inputText id="email2" value="#{usuarioMB.em2}"/>
+
+                    <p:commandButton update=":formListagemUsuarios:tabelaListagemUsuarios"  actionListener="#{usuarioMB.salvar()}" value="Salvar" />
+                    
+
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+
+
+
+    </h:body>
+</html>
+

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>SACH</title>
+    </h:head>
+    <h:body>
+        Cadastro de Curso
+        
+        <h:form>
+            <h:panelGrid columns="2" border="0">
+                
+                <h:outputLabel for="area" value="area"/>
+                <h:selectOneMenu id="area" value="#{cursoMB.curso.area}">
+                    <p:selectItem itemLabel="INFORMATICA" itemValue="INFORMATICA"/>
+                    <p:selectItem itemLabel="INDUSTRIA" itemValue="INDUSTRIA"/>
+                    <p:selectItem itemLabel="CONSTRUCAO CIVIL" itemValue="CONSTRUCAO_CIVIL"/>
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="subarea" value="subarea"/>
+                <h:selectOneMenu id="subarea" value="#{cursoMB.curso.subArea}">
+                    <p:selectItem itemLabel="SUPERIOR" value="SUPERIOR"/>
+                    <p:selectItem itemLabel="MEDIO INTEGRADO" value="MEDIO_INTEGRADO"/>
+                    <p:selectItem itemLabel="MEDIO SUBSEQUENTE" value="MEDIO_SUBSEQUENTE"/>
+                </h:selectOneMenu>
+                
+                
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>SACH</title>
+    </h:head>
+    <h:body>
+        Cadastro de Disciplinas
+        
+        <h:form id="disciplinas">
+            <h:panelGrid columns="2" border="0">
+                
+                <h:outputLabel for="descricao" value="descricao"/>
+                <h:inputText id="descricao" value="#{disciplinaMB.disciplina.descricao}"/>
+                
+                <h:outputLabel for="area" value="area"/>
+                <h:selectOneMenu id="area" value="#{disciplinaMB.disciplina.area}">
+                    <f:selectItem itemLabel="INDUSTRIA" value="INDUSTRIA"/>
+                    <f:selectItem itemLabel="INFORMATICA" value="INDUSTRIA"/>
+                    <f:selectItem itemLabel="CONSTRUCAO CIVIL" value="CONSTRUCAO_CIVIL"/>
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="subarea" value="subarea"/>
+                <h:selectOneMenu id="subarea" value="#{disciplinaMB.disciplina.subArea}">
+                    <f:selectItem itemLabel="SUPERIOR" value="SUPERIOR"/>
+                    <f:selectItem itemLabel="MEDIO INTEGRADO" value="MEDIO_INTEGRADO"/>
+                    <f:selectItem itemLabel="MEDIO SUBSEQUENTE" value="MEDIO_SUBSEQUENTE"/>
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="cargaHoraria" value="carga horaria"/>
+                <h:inputText id="cargaHoraria" value="#{disciplinaMB.disciplina.cargaHoraria}"/>
+                
+                <h:commandButton value="salvar" action="#{disciplinaMB.save()}"/>
+                
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
