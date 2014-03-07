@@ -1,0 +1,17 @@
+/* 
+    Document   : botoes
+    Created on : 20/02/2014, 10:29:47
+    Author     : Luciano
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+.visualizar{
+   
+    background-image: url("imagens/zoom.ico");   
+        
+}
+

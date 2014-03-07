@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p='http://primefaces.org/ui'>
+    <h:head>
+        <title>SACH</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link href="css/login.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+     
+    <div class="container">
+       
+         <p:layoutUnit position="center">
+                <h1>SACH</h1>
+                <h6>Sisitema Auxiliar Para Controle de Horário</h6>
+        <h:form id="acesso" class="form-signin" >
+        <h2 class="form-signin-heading">Acesso</h2>
+        <h:panelGrid columns="2">
+                <h:outputLabel for="login" value="login"/>
+                <h:inputText id="login" class="form-control" required="true" value="#{usuarioMB.usuario.login}"/>
+                <h:outputLabel for="senha" value="senha"/>
+                <h:inputSecret id="senha"  class="form-control" required="true" requiredMessage="Campo Obrigatório" value="#{usuarioMB.usuario.senha}"/>
+                <h:commandButton value="acessar" class="btn btn-lg btn-primary btn-block"  action="#{usuarioMB.autenticarUsuario()}"/>
+        </h:panelGrid>
+        </h:form>
+         </p:layoutUnit>
+      
+    </div>
+   
+    </h:body>
+</html>
+
